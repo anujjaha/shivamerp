@@ -6,4 +6,8 @@
 	<h1 class="home">
     	Welcome Home
     </h1>
+	
+	<a href="custom_invoice.php">
+		Generate Custom Invoice
+	</a>
 </center>
