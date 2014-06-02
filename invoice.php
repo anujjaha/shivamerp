@@ -288,6 +288,8 @@ mpdf-->
 </thead>';
    
    	$total = 0;
+	$totalBoys = 0 ;
+	$totalGirls = 0 ;
 	for($i=1;$i<=12;$i++ )
 	{
 	$price = 0;
@@ -314,6 +316,7 @@ mpdf-->
 			$price = ($count * $cost) ;
 			$invoiceData .= $price.'</td></tr>';
 			$total =  $total + $price;	
+			$totalBoys = $totalBoys + count($stdm[$i]);
 		}
 		
 		if(count($stdf[$i]) > 0) {
@@ -337,6 +340,7 @@ mpdf-->
 			$price = ($count * $cost) ;
 			$invoiceData .= $price.'</td></tr>';
 			$total =  $total + $price;	
+			$totalGirls = $totalGirls + count($stdf[$i]);
 		}
 	}
 	$invoiceData .= '<tr>
@@ -346,6 +350,15 @@ mpdf-->
 					</tr>';
   $invoiceData .= '</table>';
   $invoiceData .= '<table width="100%"><tr><td colspan="2"><br><br></td></tr>';
+  $invoiceData .= '<tr>';
+  $invoiceData .= '<td width="50%" align="left">';
+  $invoiceData .= "<h3>Boys : ".$totalBoys."</h3></td>";
+  $invoiceData .= '<td width="50%" align="left">';
+  $invoiceData .= "<h3>Girls : ". $totalGirls ."</h3></td>";
+  $invoiceData .= '</tr>';
+  $invoiceData .= '<tr>';
+  $invoiceData .= '<td colspan="2"> <br><br><br> </td>';
+  $invoiceData .= '</tr>';
   $invoiceData .= '<tr>';
   $invoiceData .= '<td width="50%" align="left">Reciever Signature : ___________________ </td>';
   $invoiceData .= '<td width="50%" align="right">Authorize Signature : ___________________ </td>';
