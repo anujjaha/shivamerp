@@ -5,7 +5,7 @@
 ?>
 <?php
 	$data = $_POST;
-	
+
 	$school = $data['school'];
 	$person = $data['person'];
 	$mob  = $data['mob'];
@@ -396,34 +396,26 @@
     </tr>
 </table>
 <form action="#" method="post">
-	<?php    $content = htmlentities(ob_get_contents()); ?>
-    	<input type="hidden" name="content" value="<?php echo $content;?>" />
-    	<input type="submit" name="print" value="Print Job Order" />
-    </form>
-
-    <?php
-	}
-
-?>
- <?php
-   if(isset($_POST['print'])) {
-	ob_clean();
-	$content = $_POST['content'];
-	require_once("mpdf/mpdf.php");
-	$mpdf = new mPDF();
-	$mpdf->SetHeader('Student Print');
-	$mpdf->defaultheaderfontsize=20;
-	$mpdf->SetFooter('{PAGENO}');
-	$mpdf->WriteHTML($content);
-	$mpdf->SetDisplayMode('fullpage');
-	$mpdf->list_indent_first_level = 0;  
-//	$mpdf->Output();
-	$filename = "jobs/".rand(1111,9999)."_".rand(1111,9999)."_Job_Order.pdf";
+	<?php
+	    $content = ob_get_contents(); 
+		//$_SESSION['save_job_print'] = $content;
+		require_once("mpdf/mpdf.php");
+		$mpdf = new mPDF();
+		$mpdf->SetHeader('Student Print');
+		$mpdf->defaultheaderfontsize=20;
+		$mpdf->SetFooter('{PAGENO}');
+		$mpdf->WriteHTML($content);
+		$mpdf->SetDisplayMode('fullpage');
+		$mpdf->list_indent_first_level = 0;  
+	//	$mpdf->Output();
+		$filename = "jobs/".rand(1111,9999)."_".rand(1111,9999)."_Job_Order.pdf";
 	$mpdf->Output($filename,'F');
 	?>
 	<script>
 	window.location.assign("<?php echo $filename;?>");
 	</script>
-	<?php
+    <?php
 	}
-	?>
+
+?>
+ 

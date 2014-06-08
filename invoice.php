@@ -368,8 +368,12 @@ mpdf-->
 print $invoiceData;
 ?>
 <form action="#" method="post">
-	<?php    $content = htmlentities(ob_get_contents()); ?>
-    	<input type="hidden" name="content" value="<?php echo  $content;?>" />
+	<?php 
+	   $content = ob_get_contents(); 
+	   unset($_SESSION['invoice_data']);
+	   $_SESSION['invoice_data'] = $content;
+	?>
+    	
     	<input type="submit" name="inprint" value="Print Invoice" />
     </form>
 <?php
@@ -379,7 +383,10 @@ print $invoiceData;
 <?php
 if(isset($_POST['inprint'])) {
 ob_clean();
-$content = $_POST['content'];
+//$content = $_POST['content'];
+
+$content = $_SESSION['invoice_data'];
+unset($_SESSION['invoice_data']);
 include("mpdf/mpdf.php");
 $mpdf=new mPDF('win-1252','A4','','',20,15,48,25,10,10);
 //$mpdf=new mPDF();

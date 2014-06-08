@@ -333,9 +333,12 @@ if(isset($_POST['chart'])) {
 	
    
     	<form action="#" method="post">
-	<?php    $content = htmlentities(ob_get_contents()); ?>
-    	<input type="hidden" name="content" value="<?php echo $content;?>" />
-    	<input type="submit" name="print" value="Print Students" />
+	<?php    
+	$content = ob_get_contents(); 
+		unset($_SESSION['print_student_list']);
+		$_SESSION['print_student_list'] = $content;
+	?>
+    <input type="submit" name="print" value="Print Students" />
     </form>
 <?php
 }
@@ -346,7 +349,8 @@ if(isset($_POST['chart'])) {
    <?php
    if(isset($_POST['print'])) {
 	ob_clean();
-	$content = $_POST['content'];
+	$content = $_SESSION['print_student_list'];
+	unset($_SESSION['print_student_list']);
 	require_once("mpdf/mpdf.php");
 	$mpdf = new mPDF();
 	$mpdf->SetHeader('Student Print');

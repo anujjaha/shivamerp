@@ -545,10 +545,11 @@ ob_start();
 	print $stdTwelve; ?>
     </table>
     <?php
-	 $content = htmlentities(ob_get_contents()); 
+	 $content = ob_get_contents(); 
+	 unset($_SESSION['student_datas']);
+	 $_SESSION['student_datas'] = $content;
 	?>
     	<form action="#" method="post">
-		<input type="hidden" name="content" value="<?php echo $content;?>" />
     	<input type="submit" name="print" value="Print Students" />
     </form>
 <?php
@@ -559,23 +560,12 @@ ob_start();
    <?php
    if(isset($_POST['print'])) {
 	ob_clean();
-$content = $_POST['content'];
-
-
- include("mpdf/mpdf.php");
-
-    $mpdf = new mPDF('c', 'A4', '', '',1 , 1, 1, 1, 1,1);
-
+	$content = $_SESSION['student_datas'];
+	unset($_SESSION['student_datas']);
+	include("mpdf/mpdf.php");
+	$mpdf = new mPDF('c', 'A4', '', '',1 , 1, 1, 1, 1,1);
     $mpdf->SetDisplayMode('fullpage');
-
-    $mpdf->list_indent_first_level = 0;
-
-    $mpdf->WriteHTML($content,0);
-
-   // $mpdf->Output('test.pdf','I');
- //   exit;
-
-
+    $mpdf->WriteHTML($content);
 $filename = "xpdf/".rand(1111,9999)."_".rand(1111,9999)."_Chart.pdf";
 $mpdf->Output($filename,'F');
 ?>
@@ -584,21 +574,4 @@ window.location.assign("<?php echo $filename;?>");
 </script>
 <?php
 }
-
-/*
-require_once("mpdf/mpdf.php");
-
-$mpdf = new mPDF();
-//	$content = "testing";	
-	$mpdf->SetHeader('Size Chart');
-	$mpdf->defaultheaderfontsize=20;
-	$mpdf->SetFooter('{PAGENO}');
-	
-$mpdf->WriteHTML($content);
-$mpdf->SetDisplayMode('fullpage');
-$mpdf->list_indent_first_level = 0;  // 1 or 0 - whether to indent the first level of a list
-$mpdf->Output();
-exit;
-*/
-	//}
-//	?>
+?>

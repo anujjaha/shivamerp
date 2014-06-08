@@ -1734,45 +1734,24 @@ ob_start();
 <!--Female Charg End -->
 <?php
 
-$content = htmlentities(ob_get_contents());
+$content = ob_get_contents();
+unset($_SESSION['school_chart_print']);
+$_SESSION['school_chart_print'] = $content;
 ?>
 <center>
 <form action="#" method="post">
-	<input type="hidden" name="content" value="<?php echo $content;?>" />
     <input type="submit" name="print" value="Take Print" class="btn" />
 </form>
 </center>
 <?php
-/*require_once("mpdf/mpdf.php");
-
-$mpdf = new mPDF();
-$content = "testing";
-$mpdf->WriteHTML($content);
-
-$mpdf->Output();
-//exit;
-
-//print_r($mpdf);
-//die;
-//$content = file_get_contents("http://localhost/kush/school_chart.php");
-//echo "<pre>";
-//print_r($content);
-//die;
-
-//$mpdf->WriteHTML("Teting of text of pdf");
-
-//$mpdf->Output();
-//exit;
-*/
 }
 if(isset($_POST['print']))
 {
 ob_clean();
-$content = $_POST['content'];
-
+//$content = $_POST['content'];
+$content = $_SESSION['school_chart_print'];
+unset($_SESSION['school_chart_print']);
 require_once("mpdf/mpdf.php");
-//ob_end_clean();
-//$mpdf = new mPDF();
 $mpdf=new mPDF('win-1252','A4','','',10,10,28,20,10,10); 
 	$mpdf->SetHeader('Size Chart');
 	$mpdf->defaultheaderfontsize=18;

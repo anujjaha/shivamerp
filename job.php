@@ -2,9 +2,33 @@
 	require_once ("lib/master.class.php");
 	require_once ("menu.php");
 ?>
+<script type="text/javascript">
+function check()
+{
+	var key = document.getElementById("key").value;
+	var skey = document.getElementById("skey").value;
+	if(key == "")
+	{
+		alert("Please Provide Security Key");
+		document.getElementById("key").focus();
+		return false;
+	}
+	else if(key != skey)
+	{
+		alert("Please Provide Valid Security Key");
+		document.getElementById("key").value = "";
+		document.getElementById("key").focus();
+		return false;
+	}
+	else
+	{
+		return true;
+	}
+}
+</script>
 <br><br>
 <table align="center" border="1" rules="all" width="80%">
-<form action="save_job.php" method="post">
+<form action="save_job.php" method="post" onsubmit="return check()">
 
 	<tr>
     	<td colspan="2" align="center">
@@ -285,11 +309,26 @@
             </table>
         </td>
     </tr>
+	<tr>
+		<td align="right">
+			Security Key :
+		</td>
+		<td>
+			<span style="color:#FF0000; font-size:24px;font-weight:bold;">
+			<?php
+			$key = rand(1,9);
+			echo $key;
+			?>
+			</span>
+			<input type="text" name="key" id="key" maxlength="2" style="width:44px;"/>
+		</td>
+	</tr>
     <tr>
     	<td colspan="2" align="center">
     	
         	<!--<input type="hidden" name="odate" value=" <?php //echo date('d-m-Y');?>" />-->
-        	<input type="submit" name="save" value="Save Job Order" />
+			<input type="hidden" name="skey" id="skey" value="<?php echo $key;?>"/>
+        	<input type="submit" name="save" value="Save and Print Job Order" />
         </td>
     </tr>
 </form>
