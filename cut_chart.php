@@ -486,7 +486,7 @@ if(isset($_POST['printchart']))
 
 	$mpdf->WriteHTML($content);
 
-$filename = "invoice/".rand(1111,9999)."_".rand(1111,9999)."_Invoice.pdf";
+$filename = "cutting-chart/".rand(1111,9999)."_".rand(1111,9999)."_Invoice.pdf";
 	$mpdf->Output($filename,'F');
 	?>
 	<script>
