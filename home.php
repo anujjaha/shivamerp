@@ -10,4 +10,10 @@
 	<a href="custom_invoice.php">
 		Generate Custom Invoice
 	</a>
+	
+	<br /><br /><br /><br /><br />
+	<a href="cut_chart.php">
+		Cutting Chart
+	</a>
+
 </center>
