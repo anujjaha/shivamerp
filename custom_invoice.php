@@ -318,7 +318,7 @@ function check()
 	<tr>	
 		<td  width="5%">10</td>
 		<td width="60%">
-			<input type="text" name="item3" id="particular[10]" style="width:450px;" />
+			<input type="text" name="item10" id="particular[10]" style="width:450px;" />
 		</td>
 		<td  width="10%">
 			<input type="text" name="quantity10" id="quantity[10]" />
