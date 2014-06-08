@@ -226,7 +226,7 @@ if(isset($_POST['cutting_chart']))
 		}
 		?>
 		<td>
-			Total
+			<strong>Total</strong>
 		</td>
 		</tr>
 		<tr>
@@ -236,7 +236,6 @@ if(isset($_POST['cutting_chart']))
 		{
 		?>
 			<td>
-			
 			<?php 
 			echo $boySizeValue[$xyz][$yvalue]; ?>
 			</td>
@@ -244,7 +243,7 @@ if(isset($_POST['cutting_chart']))
 		$xyz++;
 		}
 		?>
-		<td> <?php echo $totalBoys;?> </td>
+		<td><strong> <?php echo $totalBoys;?></strong> </td>
 		</tr>
 	</table>
 	<!-- End of Boys Pents Category -->
@@ -299,21 +298,37 @@ if(isset($_POST['cutting_chart']))
 	<table align="center" border="2" style="font-size: 9pt;" cellpadding="8">
 		<tr>
 			<td colspan="8">
-				<h3> Boys Shirts 
+				<h3> Boys Shirts / 
 				Meter Cloth :
 				<?php echo count($studentsBoys) * 2 * 0.7;?>
 				</h3>
 			</td>
 		</tr>
 		<tr>
-			<td style="border: 0.1mm solid #888888;">Shirt-20 &nbsp;&nbsp; <strong>C-10.5</strong></td>
-			<td style="border: 0.1mm solid #888888;">Shirt-22 &nbsp;&nbsp; <strong>C-11</strong></td>
-			<td style="border: 0.1mm solid #888888;">Shirt-24 &nbsp;&nbsp; <strong>C-11.5</strong></td>
-			<td style="border: 0.1mm solid #888888;">Shirt-26 &nbsp;&nbsp; <strong>C-12</strong></td>
-			<td style="border: 0.1mm solid #888888;">Shirt-28 &nbsp;&nbsp; <strong>C-12.5</strong></td>
-			<td style="border: 0.1mm solid #888888;">Shirt-30 &nbsp;&nbsp; <strong>C-13 </strong></td>
-			<td style="border: 0.1mm solid #888888;">Shirt-32 &nbsp;&nbsp; <strong>C-13.5</strong></td>
-			<td style="border: 0.1mm solid #888888;">Total </td>
+			<td style="border: 0.1mm solid #888888;">Shirt-20
+			<br />
+			<strong>C-10.5</strong>
+			</td>
+			<td style="border: 0.1mm solid #888888;">Shirt-22 	
+			<br />
+			<strong>C-11</strong>
+			</td>
+			<td style="border: 0.1mm solid #888888;">Shirt-24
+			<br />
+			<strong>C-11.5</strong></td>
+			<td style="border: 0.1mm solid #888888;">Shirt-26 
+			<br />
+			<strong>C-12</strong></td>
+			<td style="border: 0.1mm solid #888888;">Shirt-28 
+			<br />
+			<strong>C-12.5</strong></td>
+			<td style="border: 0.1mm solid #888888;">Shirt-30 
+			<br />
+			<strong>C-13 </strong></td>
+			<td style="border: 0.1mm solid #888888;">Shirt-32 
+			<br />
+			<strong>C-13.5</strong></td>
+			<td style="border: 0.1mm solid #888888;"><strong>Total </strong></td>
 		</tr>
 		<tr>
 			<td><?php echo $s20 * 2;?></td>
@@ -323,7 +338,7 @@ if(isset($_POST['cutting_chart']))
 			<td><?php echo $s28 * 2;?></td>
 			<td><?php echo $s30 * 2;?></td>
 			<td><?php echo $s32 * 2;?></td>
-			<td><?php echo count($studentsBoys) * 2;?> </td>
+			<td><strong><?php echo count($studentsBoys) * 2;?> </strong></td>
 		</tr>
 	</table>
 	
@@ -363,7 +378,7 @@ if(isset($_POST['cutting_chart']))
 				}
 			?>
 			<td>
-				Total
+				<strong>Total</strong>
 			</td>
 		</tr>
 		<tr>
@@ -378,7 +393,7 @@ if(isset($_POST['cutting_chart']))
 				}
 			?>
 			<td>
-				<?php echo $girlTotal;?>
+				<strong><?php echo $girlTotal;?></strong>
 			</td>	
 		</tr>
 	</table>
@@ -424,7 +439,7 @@ if(isset($_POST['cutting_chart']))
 				}
 			?>
 			<td>
-				Total
+				<strong>Total</strong>
 			</td>
 		</tr>
 		<tr>
@@ -439,7 +454,7 @@ if(isset($_POST['cutting_chart']))
 				}
 			?>
 			<td>
-				<?php echo $girlTotal;?>
+				<strong><?php echo $girlTotal;?></strong>
 			</td>	
 		</tr>
 	</table>
@@ -486,7 +501,8 @@ if(isset($_POST['printchart']))
 
 	$mpdf->WriteHTML($content);
 
-$filename = "cutting-chart/".rand(1111,9999)."_".rand(1111,9999)."_Invoice.pdf";
+//$filename = "cutting-chart/".rand(1111,9999)."_".rand(1111,9999)."_Cutting-Chart.pdf";
+	$filename = "Cutting-Chart.pdf";
 	$mpdf->Output($filename,'F');
 	?>
 	<script>
