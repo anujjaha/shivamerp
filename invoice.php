@@ -21,7 +21,14 @@ td.show_chart  {border-style:solid;
       padding:10px;
 }
 </style>
-
+<?php
+if(isset($_POST))
+{
+	$selected_school = $_POST['school'];
+	$selected_term = $_POST['term'];
+	$selected_quantity = $_POST['quantity'];
+}
+?>
 <table align="center" border="2" width="80%">
 <form action="#" method="POST">
 	<tr>	
@@ -35,6 +42,14 @@ td.show_chart  {border-style:solid;
     	</td>
         <td>
         	<select name="school">
+			<?php
+			if(isset($selected_school))
+			{
+			?>
+			<option><?php echo $selected_school;?></option>
+			<?php
+			}
+			?>
             <?php
 				foreach($schoolList as $school)
 				{
@@ -48,12 +63,20 @@ td.show_chart  {border-style:solid;
             </select>
         </td>
    </tr>
-    <tr>
+   <tr>
     	<td align="right" width="50%" class="add_student">
         	Select Term :
     	</td>
         <td>
         	<select name="term">
+			<?php
+			if(isset($selected_term))
+			{
+			?>
+			<option><?php echo $selected_term;?></option>
+			<?php
+			}
+			?>
             <?php
 				foreach($termList as $term)
 				{
@@ -68,6 +91,21 @@ td.show_chart  {border-style:solid;
         </td>
    </tr>
    <tr>
+    	<td align="right" width="50%" class="add_student">
+        	Enter Quantity :
+    	</td>
+        <td>
+			<?php
+			$default_quantity = "1";
+			if(isset($selected_quantity))
+			{
+				$default_quantity = $selected_quantity;
+			}
+			?>
+        	<input type="text" name="quantity" value="<?php echo $default_quantity;?>" />
+        </td>
+   </tr>
+   <tr>
    		<td colspan="2" align="center">
         	<input type="submit" name="invoice" value="Generate Invoice" />
         </td>
@@ -77,6 +115,7 @@ td.show_chart  {border-style:solid;
 <?php
 if(isset($_POST['invoice'])) {
 	ob_start();
+	$_quantity  = $_POST['quantity'];
 	$school_name = $_POST['school'];
 	$student_term = $_POST['term'];
 	$school_id = $obj->getSchoolIdByName($school_name);
@@ -309,8 +348,8 @@ mpdf-->
 			<td align="center">'.$i.'</td>
 			<td align="center">'.$student_term.' - Boys </td>
 			<td>PENTS / SHIRTS </td>
-			<td align="center">'. count($stdm[$i]) . '&nbsp;&nbsp;  *&nbsp;&nbsp;  2  '.
-			'<td align="center">'. $count = count($stdm[$i])  * 2 .'</td>'.
+			<td align="center">'. count($stdm[$i]) . '&nbsp;&nbsp;  *&nbsp;&nbsp;    '.$_quantity.
+			'<td align="center">'. $count = count($stdm[$i])  * $_quantity .'</td>'.
 			'<td align="right">'.$cost.'</td>';
 			$invoiceData .= '<td align="right">';
 			$price = ($count * $cost) ;
@@ -333,8 +372,8 @@ mpdf-->
 			<td align="center">'.$i.'</td>
 			<td align="center">'.$student_term.' - Girls </td>
 			<td> SALWAR / PINA TOP </td>
-			<td align="center">'. count($stdf[$i]) . '&nbsp;&nbsp;  * &nbsp;&nbsp;  2  '.'</td>
-			<td align="center">'. $count = count($stdf[$i]) * 2 .'</td>
+			<td align="center">'. count($stdf[$i]) . '&nbsp;&nbsp;  * &nbsp;&nbsp;    '.$_quantity.'</td>
+			<td align="center">'. $count = count($stdf[$i]) * $_quantity .'</td>
 			<td align="right">'.$cost.'</td>';
 			$invoiceData .= '<td align="right">';
 			$price = ($count * $cost) ;

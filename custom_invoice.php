@@ -331,6 +331,88 @@ function check()
 		</td>
 	</tr>
 	
+	<tr>	
+		<td  width="5%">11</td>
+		<td width="60%">
+			<input type="text" name="item11" id="particular[11]" style="width:450px;" />
+		</td>
+		<td  width="10%">
+			<input type="text" name="quantity11" id="quantity[11]" />
+		</td>
+		<td  width="10%">
+			<input type="text" name="rate11" id="rate[11]" onblur="return total(11)" />
+		</td>
+		<td  width="15%">
+			<input type="text" name="total11" id="total[11]" />
+		</td>
+	</tr>
+	
+	
+	<tr>	
+		<td  width="5%">12</td>
+		<td width="60%">
+			<input type="text" name="item12" id="particular[12]" style="width:450px;" />
+		</td>
+		<td  width="10%">
+			<input type="text" name="quantity12" id="quantity[12]" />
+		</td>
+		<td  width="10%">
+			<input type="text" name="rate12" id="rate[12]" onblur="return total(12)" />
+		</td>
+		<td  width="15%">
+			<input type="text" name="total12" id="total[12]" />
+		</td>
+	</tr>
+	
+	<tr>	
+		<td  width="5%">13</td>
+		<td width="60%">
+			<input type="text" name="item13" id="particular[13]" style="width:450px;" />
+		</td>
+		<td  width="10%">
+			<input type="text" name="quantity13" id="quantity[13]" />
+		</td>
+		<td  width="10%">
+			<input type="text" name="rate11" id="rate[13]" onblur="return total(13)" />
+		</td>
+		<td  width="15%">
+			<input type="text" name="total11" id="total[13]" />
+		</td>
+	</tr>
+	
+	
+	<tr>	
+		<td  width="5%">14</td>
+		<td width="60%">
+			<input type="text" name="item14" id="particular[14]" style="width:450px;" />
+		</td>
+		<td  width="10%">
+			<input type="text" name="quantity14" id="quantity[14]" />
+		</td>
+		<td  width="10%">
+			<input type="text" name="rate14" id="rate[14]" onblur="return total(14)" />
+		</td>
+		<td  width="15%">
+			<input type="text" name="total14" id="total[14]" />
+		</td>
+	</tr>
+	
+	<tr>	
+		<td  width="5%">15</td>
+		<td width="60%">
+			<input type="text" name="item15" id="particular[15]" style="width:450px;" />
+		</td>
+		<td  width="10%">
+			<input type="text" name="quantity15" id="quantity[15]" />
+		</td>
+		<td  width="10%">
+			<input type="text" name="rate15" id="rate[15]" onblur="return total(15)" />
+		</td>
+		<td  width="15%">
+			<input type="text" name="total15" id="total[15]" />
+		</td>
+	</tr>
+	
 	<tr>
 		<td colspan="2" align="right">
 			Security Key :
@@ -447,7 +529,7 @@ $print = '
 	</tr>';
 
 $grandTotal = 0;
-for($i = 1 ;$i <= 10 ;$i++)
+for($i = 1 ;$i <= 15 ;$i++)
 {
 $item = "item".$i;
 $quantity = "quantity".$i;
@@ -475,18 +557,18 @@ $print .='
 </tr>
 </table>';
 $print .=' 
-<table align="center" border="1" width="100%">
+<table align="center" border="0" width="100%">
 <tr>	
-	<td style="border: 0.1mm solid #000000;" align="center" width="50%">
+	<td  align="center" width="50%">
 	<br><br><br><br><br><br><br><br>
 		Receiver Signature : ______________________
-		<br><br><br><br><br><br>
+		<br>
 		&nbsp;
 	</td>
-	<td style="border: 0.1mm solid #000000;" width="50%" align="center">
+	<td  width="50%" align="center">
 	<br><br><br><br><br><br><br><br>
 		Authorized Signature : ____________________
-		<br><br><br><br><br><br>
+		<br>
 		&nbsp;
 	</td>
 </tr>
