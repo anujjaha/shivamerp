@@ -231,7 +231,7 @@ table thead td { background-color: #EEEEEE;
 <htmlpageheader name="myheader">
 <table width="100%"><tr>
 <td width="50%" style="color:#0000BB;"><span style="font-weight: bold; font-size: 14pt;">
-	Shivam Dressess
+	Shivam Dresses
 </span><br />Opp, Post Office<br />Gheekanta Road , <br />Ahmedabad<br /><span style="font-size: 12pt;">&#9742;</span>079-65235816,98253 46597
 <br>
 Email : shivamdinesh67@gmail.com

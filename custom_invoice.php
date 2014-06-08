@@ -375,7 +375,7 @@ $print = '
 <table align="center" border="2" width="100%">
 	<tr>
 		<td width="45%" >
-			<h4>Shivam Dressess </h4>
+			<h4>Shivam Dresses </h4>
 			<h5>
 			Opp, Post Office,
 			<br />
