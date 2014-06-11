@@ -469,7 +469,7 @@ $print = '
 			<br />
 			Mobile : 98253 46597
 			<br />
-			Email : shivamdinesh@gmail.com
+			Email : shivamdinesh67@gmail.com
 			</h5>
 		</td>
 		
