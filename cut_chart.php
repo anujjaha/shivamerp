@@ -148,7 +148,7 @@ if(isset($_POST['cutting_chart']))
 	$sr++;
 	}
 	
-	$boySize = array("22","24","26","28","30","32","34","36","38","40","42","44");
+	$boySize = array("Size","24","26","28","30","32","34","36","38","40","42","44");
 	
 	//Create Boys Array to Set value by Size
 	$boySizeValue = array();
@@ -373,7 +373,13 @@ if(isset($_POST['cutting_chart']))
 				foreach($femaleSize as $fvalue)
 				{
 				?>
-				<td><?php echo $fvalue;?></td>
+				<td><?php 
+						if($fvalue < 23	 )
+						{
+						$fvalue = "Size";
+						}
+						echo $fvalue;
+				?></td>
 				<?php
 				}
 			?>
@@ -387,7 +393,18 @@ if(isset($_POST['cutting_chart']))
 				foreach($femaleSize as $fvalue)
 				{
 				?>
-				<td><?php echo $girlSizeValue[$gsr][$fvalue];?></td>
+				<td><?php 
+					if($fvalue < 22 )
+					{
+						echo "Size";
+					}
+					else
+					{
+					echo $girlSizeValue[$gsr][$fvalue];
+					}
+					?>
+				</td>
+					
 				<?php
 				$gsr++;
 				}
@@ -401,7 +418,7 @@ if(isset($_POST['cutting_chart']))
 	
 	<!-- Start Second Girls Category -->
 	<?php
-	$femaleSize = array("22","24","26","28","30","32","34","36","38","40","42","44");
+	$femaleSize = array("Size","24","26","28","30","32","34","36","38","40","42","44");
 	$girlTotal = 0;
 	foreach($femaleSize as $gvalue)
 	{
@@ -434,7 +451,14 @@ if(isset($_POST['cutting_chart']))
 				foreach($femaleSize as $fvalue)
 				{
 				?>
-				<td><?php echo $fvalue-2;?></td>
+				<td><?php 
+				$pina = $fvalue-2;
+				if($pina == "-2")
+				{
+					$pina = "Size";
+				}
+				echo $pina;
+				?></td>
 				<?php
 				}
 			?>
